@@ -59,7 +59,38 @@ namespace sekizNisan
             // 5) bu listede kaç tane pazartesi var?
             var countOfDay = GetMonday(dt);
             Console.WriteLine("Pazartesi sayısı:"+countOfDay);
+            //6) Saat aralığı 17:00 - 18:00 arasında olan tüm tarihleri ekrana yaz.
+
+
+            List<DateTime> saat = dt.Where(q => q.Hour >= 17 && q.Hour<=18).ToList();
+            foreach (var item in saat)
+            {
+                Console.WriteLine("17:00 ile 18:00 arasında olan tarihler:" + item);
+            }
+
+            //7) Kullanıcı ekrandan bir yıl girsin ve o yıla ait tüm tarihleri ekrana yaz
+
+
+            //8) Kullanıcı ekrandan önce yıl sonra ay girsin ve bu ay ve yıla ait tüm tarihler sıralansın.
+
+
+            //9) 2010 SONRASI tarihleri ekrana yazdır.
+
+            List<DateTime> year1 = (dt.Where(x => x.Year > 2010).ToList());
+            foreach (var item in year1) Console.WriteLine(item);
+
+            //10) 2010-2015 arasında SADECE OCAK ayında geçen tarihleri ekrana yazdır.
+
+            List<DateTime> year2 = (dt.Where(x => x.Year > 2010 && x.Year<2015 && x.Month==1).ToList());
+            foreach (var item in year2)
+            {
+                Console.WriteLine("Ocak ayı olan tarihler:"+item);
+            }
         }
+
+
+
+
 
         //pazartesi günü için dışarıdan nesne üretildi
         private static object GetMonday(List<DateTime> dt)
